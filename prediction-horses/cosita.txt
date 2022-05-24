@@ -1,0 +1,29 @@
+df['surgery'].unique()
+df[['surgery']].value_counts()
+
+typos_col = {
+    'r_temperature': 'float64'
+}
+
+df = df.astype(typos_col)
+
+df.dtypes
+
+df['r_temperature'].plot(kind = 'hist')
+
+df['cap_ref_time'] = df['cap_ref_time'].where(df['cap_ref_time'] != '?', other = np.nan)
+
+
+
+muc_membraes_dict = {
+    1.0:  'normal pink',
+    2.0: 'bright pink',
+    3.0: 'pale pink',
+    4.0: 'pale cyanotic',
+    5.0: 'bright red / injected', 
+    6.0: 'dark cyanotic'
+}
+
+df['muc_membraes'] = df['muc_membraes'].map(muc_membraes_dict)
+
+df['muc_membraes'].unique()
